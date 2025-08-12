@@ -5,11 +5,18 @@ body {
     font-family: sans-serif;
 }
 
-#uploadBtn {
+#actions {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    display: flex;
+    gap: 12px;
+    z-index: 1000;
+}
+
+#uploadBtn,
+#textBtn {
     width: 60px;
     height: 60px;
     font-size: 2rem;
@@ -18,8 +25,9 @@ body {
     background: white;
     box-shadow: 0 0 15px rgba(255,0,255,0.5);
     cursor: pointer;
-    z-index: 1000;
 }
+
+#textBtn { font-weight: bold; }
 
 #bubbleContainer {
     position: relative;
@@ -37,6 +45,9 @@ body {
         0 0 20px rgba(255,0,255,0.3),
         inset 0 0 15px rgba(0,255,255,0.3);
     animation: float 10s infinite ease-in-out;
+    cursor: pointer;
+    max-width: 200px;
+    overflow: hidden;
 }
 
 .bubble img {
@@ -49,3 +60,66 @@ body {
     50% { transform: translateY(-30px); }
     100% { transform: translateY(0px); }
 }
+
+.hidden { display: none; }
+
+/* Modal styles */
+#modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+#modalContent {
+    background: #fff;
+    width: min(900px, 90vw);
+    height: min(80vh, 800px);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 12px;
+    position: relative;
+}
+
+#modalClose {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: #f0f0f0;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+#viewer {
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fafafa;
+    border-radius: 8px;
+}
+
+#viewer img, #viewer video, #viewer audio, #viewer iframe {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#meta { font-size: 0.9rem; color: #666; }
+
+#comments { overflow: auto; }
+#commentList { list-style: none; padding: 0; margin: 8px 0; max-height: 200px; overflow: auto; }
+#commentList li { padding: 6px 8px; border-bottom: 1px solid #eee; }
+
+#commentForm { display: flex; gap: 8px; }
+#commentInput { flex: 1; padding: 8px; border-radius: 6px; border: 1px solid #ddd; }
+#commentForm button { padding: 8px 12px; border: none; border-radius: 6px; background: #7b61ff; color: #fff; cursor: pointer; }

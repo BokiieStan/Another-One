@@ -6,9 +6,29 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button id="uploadBtn">+</button>
+    <div id="actions">
+        <button id="uploadBtn" title="Upload file">+</button>
+        <button id="textBtn" title="Add text">T</button>
+    </div>
     <input type="file" id="fileInput" style="display:none">
     <div id="bubbleContainer"></div>
+
+    <!-- Modal for expanded bubble view -->
+    <div id="modal" class="hidden" aria-hidden="true">
+        <div id="modalContent">
+            <button id="modalClose" aria-label="Close">×</button>
+            <div id="viewer"></div>
+            <div id="meta"></div>
+            <div id="comments">
+                <h3>Comments</h3>
+                <ul id="commentList"></ul>
+                <form id="commentForm">
+                    <input id="commentInput" type="text" placeholder="Write a comment..." required />
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="script.js"></script>
